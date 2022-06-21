@@ -14,20 +14,20 @@ task('clean', function () {
 });
 
 task('scripts', function() {
-    return src('./src/**/*.js')
+    return src('./src/*.js')
         .pipe(babel({
             presets: ['@babel/env']
         }))
         .pipe(uglify())
-        .pipe(dest('./public/script.js'))
+        .pipe(dest('./public/'))
 });
 
 task('scss', function() {
-    return src('./src/**/*.scss')
+    return src('./src/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(cleanCSS())
-        .pipe(dest('./public/style.css'));
+        .pipe(dest('./public/'));
 });
 
 task('pug', function() {
